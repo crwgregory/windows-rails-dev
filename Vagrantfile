@@ -8,6 +8,11 @@ Vagrant.configure("2") do |config|
     # The ip address you want to use to connect
     config.vm.network :private_network, ip: "192.168.55.101"
 
+    # 1gb memory
+    config.vm.provider :virtualbox do |v|
+          v.customize ["modifyvm", :id, "--memory", 1024]
+    end
+
     # Load in our script file
     config.vm.provision :shell, path: "bootstrap.sh"
 
